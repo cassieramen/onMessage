@@ -1,0 +1,14 @@
+body {
+   font-family:sans-serif;
+}
+
+#outer {
+    display:inline-block;
+    position:relative;
+    left:50%;
+}
+
+#inner {
+    position:relative;
+    left:-50%;
+}
