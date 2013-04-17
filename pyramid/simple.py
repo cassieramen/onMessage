@@ -1,15 +1,17 @@
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
-
+from bs4 import BeautifulSoup
+import urllib2
 
 def hello(request):
     return Response('Hello World!' % request.matchdict)
 
 def scrape(request):
-	response = Response('test')
-	print response
-	return response
+	response = urllib2.urlopen("http://www.presidentialrhetoric.com/speeches/01.21.13.html")
+	html_doc = response.read()
+	soup = BeautifulSoup(html_doc)
+	return Response(soup.get_text())
 
 if __name__ == '__main__':
     config = Configurator()
@@ -20,6 +22,6 @@ if __name__ == '__main__':
     config.add_route('scrape', '/scrape')
     config.add_view(scrape, route_name='scrape')
     app = config.make_wsgi_app()
-    server = make_server('192.168.1.123', 8080, app)
+    server = make_server('localhost', 8080, app)
     server.serve_forever()
    

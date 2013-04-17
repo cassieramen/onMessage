@@ -11,6 +11,5 @@ function httpGet(theUrl)
 		console.log(e);
 		console.log(xmlHttp);
 	}
-	alert(xmlHttp.responseText);
-	return xmlHttp.responseText;
+	document.getElementById("graph").innerHTML=xmlHttp.responseText;
 }
