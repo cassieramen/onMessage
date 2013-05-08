@@ -4,19 +4,51 @@
 
 <!-- CSS -->
 <link href="style.css" type="text/css" rel="stylesheet" media="screen" />
+<!-- <link href="../flot/examples/examples.css" rel="stylesheet" type="text/css"> -->
 <!-- /CSS -->
 
 <!-- javascript -->
+<script language="javascript" type="text/javascript" src="../flot/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="../flot/jquery.flot.js"></script>
+<script language="javascript" type="text/javascript" src="../flot/jquery.flot.time.js"></script>
 <script type="text/javascript" src="javascript.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+		graph("immigration");
+	});
+
+</script>
 <!-- /javascript -->
 
 </head>
-<body>
+<body onload="init()">
 	<div id="inner">
 		<div id="outer">
 			<h1>onMessage</h1>
-			<h2 id="graph">Graph Here</h2>
-			<input id="button" type="button" onclick="httpGet('http://localhost:8080/scrape')" value="Click Me!">
+			<!-- TABS -->
+			<ul id="tabs">
+			  <li><a href="#immigration">Immigration</a></li>
+			  <li><a href="#foreignAffairs">Foreign Affairs</a></li>
+			  <li><a href="#education">Education</a></li>
+			</ul>
+
+			<div class="tabContent" id="immigration">
+			</div>
+
+			<div class="tabContent" id="foreignAffairs">
+			</div>
+
+			<div class="tabContent" id="education">
+			</div>
+
+			<div id="plot">
+				<div class="demo-container">
+					<div id="placeholder" class="demo-placeholder"></div>
+				</div>
+				<p id="terms"></p>
+			</div>
+
 		</div>
 	</div>
 </body>
