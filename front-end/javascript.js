@@ -23,9 +23,9 @@ function collectData(topic) {
 		if(ob_data.length>0) {
 			var date = createJSDate(ob_data[0].date);
 			var count = termCountTotal(ob_data[0].terms);
-			obama.push([date, count]);
+			var length = ob_data[0].speech_length;
+			obama.push([date, count/length]);
 			addTerms(ob_data[0].terms, terms);
-			
 			obama_data.push(ob_data[0]);
 		}
 	}
@@ -35,7 +35,8 @@ function collectData(topic) {
 		if(ro_data.length>0) {
 			var date = createJSDate(ro_data[0].date);
 			var count = termCountTotal(ro_data[0].terms);
-			romney.push([date, count]);
+			var length = ob_data[0].speech_length;
+			romney.push([date, count/length]);
 			addTerms(ro_data[0].terms, terms);
 			
 			romney_data.push(ro_data[0]);
@@ -132,6 +133,10 @@ function graph(topic)
 					showTooltip(item.pageX, item.pageY,
 				    "Term Counts: <br />" + term_array);
 				}
+			});
+
+			$("#placeholder").bind("plothoverout", function (event, pos, item) {
+				$("#tooltip").remove();
 			});
 
 			$("#placeholder").bind("plotclick", function (event, pos, item) {

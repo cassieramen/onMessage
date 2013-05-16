@@ -2757,8 +2757,8 @@ Licensed under the MIT license.
 
         function onMouseLeave(e) {
             if (options.grid.hoverable)
-                triggerClickHoverEvent("plothover", e,
-                                       function (s) { return false; });
+                triggerClickHoverEvent("plothoverout", e,
+                                       function (s) { return s["hoverable"] != false; });
         }
 
         function onClick(e) {

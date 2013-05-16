@@ -21,6 +21,10 @@ black_list = ["the", "to", "and", "of", "that", "a", "we", "you", "in", "i", "fo
 immigration_list = ["immigration", "immigrant", "immigrants", "dream", "deport", "deported", "deportation", "illegal", "citizen","citizenship"]
 foreignAffairs_list = ["war", "veteran", "veterans", "military", "navy", "army", "foreign", "syria", "syrian", "syrians", "afghanistan", "afghan", "karzai", "troops", "iraq", "iran", "nuclear", "pentagon", "laden", "guantanamo", "abroad", "benghazi", "qaeda"]
 education_list = ["education", "teacher", "teachers", "school", "schools", "student", "students", "classroom", "classrooms", "college", "colleges", "university", "universities", "tuition"]
+economy_list = ["jobs", "deficit", "money", "tax", "taxes", "budget", "banks", "bank", "lenders", "enterprise", "prosperity", "economy", "economic", "debt", "financial", "recession", "surplus", "spending", "employment", "unemployment", "aid", "financial"]
+energy_list = ["energy", "oil", "environment", "climate", "warming", "farmer", "farmers", "agriculture", "renewable", "solar", "turbine", "turbines", "manufacture","wind", "frack", "fracking", "windmills"]
+healthCare_list = ["healthcare", "medicine", "medicare", "medication", "preexisting", "insurance", "hospital", "hospitals", "doctor", "doctors", "medicaid", "obamacare"]
+gayRights_list = ["gay", "sexuality", "doma", "equality", "marriage"]
 
 def hello(request):
     return Response('Hello World!' % request.matchdict)
@@ -37,15 +41,15 @@ def pull_terms(html, topic):
 		count = count_words(text, foreignAffairs_list)
 	elif topic == "education":
 		count = count_words(text, education_list)
-	'''top_five = []
-	i=0
-	while len(top_five) < 5:
-		word = count[i][0]
-		if word not in black_list and not "=" in word:
-			top_five.append((count[i][0],count[i][1]))
-		i=i+1
-	return top_five'''
-	return count
+	elif topic == "economy":
+		count = count_words(text, economy_list)
+	elif topic == "energy":
+		count = count_words(text, energy_list)
+	elif topic == "healthCare":
+		count = count_words(text, healthCare_list)
+	elif topic == "gayRights":
+		count = count_words(text, gayRights_list)
+	return count, len(text)
 
 def count_words(a_list, topic_list):
     words = {}
@@ -63,8 +67,8 @@ def pres_rhetoric_scrape(date, name, topic):
 	try: 
 		response = urllib2.urlopen(full_url)
 		html_doc = response.read()
-		terms = pull_terms(html_doc, topic)
-		date_term.append({"date":date, "terms":terms, "full_url":full_url})
+		terms, length = pull_terms(html_doc, topic)
+		date_term.append({"date":date, "terms":terms, "full_url":full_url, "speech_length":length})
 	except:
 		pass
 	response = Response(json.dumps(date_term))
