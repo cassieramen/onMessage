@@ -90,8 +90,8 @@ function graph(topic)
 		function update(topic) {
 			collectData(topic);
 			$.plot("#placeholder", [
-				{ color: "red", data: obama, label: "Obama"},
-				{ color: "blue", data: romney, label: "Romney"}
+				{ color: "blue", data: obama, label: "Obama"},
+				{ color: "red", data: romney, label: "Romney"}
 			], 
 			{
 				series: {
@@ -186,7 +186,16 @@ function graph(topic)
 			}
 		}
 
-		document.getElementById("terms").innerHTML = "Terms we looked for included: " + terms;
+		display_html = "Terms we looked for included:"
+		for(var i=0;i<terms.length;i++) {
+			if(i==terms.length-1) {
+				display_html = display_html + " " + terms[i];
+			}
+			else {
+				display_html = display_html + " " + terms[i] + ",";
+			}
+		}
+		document.getElementById("terms").innerHTML = display_html;
 	}
 
 //Tabbing features

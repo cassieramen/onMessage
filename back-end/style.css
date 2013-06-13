@@ -1,0 +1,25 @@
+#outer {
+    display:inline-block;
+    position:relative;
+    left:-50%;
+}
+
+#inner {
+	display:inline-block;
+    position:relative;
+    left:50%;
+}
+
+#text_area {
+	display:block;
+	float:right;
+}
+
+#select_box {
+	display:block;
+	float:left;
+}
+
+#new_category {
+	padding-top: 200px;
+}

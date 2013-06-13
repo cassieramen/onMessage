@@ -24,7 +24,7 @@ education_list = ["education", "teacher", "teachers", "school", "schools", "stud
 economy_list = ["jobs", "deficit", "money", "tax", "taxes", "budget", "banks", "bank", "lenders", "enterprise", "prosperity", "economy", "economic", "debt", "financial", "recession", "surplus", "spending", "employment", "unemployment", "aid", "financial"]
 energy_list = ["energy", "oil", "environment", "climate", "warming", "farmer", "farmers", "agriculture", "renewable", "solar", "turbine", "turbines", "manufacture","wind", "frack", "fracking", "windmills"]
 healthCare_list = ["healthcare", "medicine", "medicare", "medication", "preexisting", "insurance", "hospital", "hospitals", "doctor", "doctors", "medicaid", "obamacare"]
-gayRights_list = ["gay", "sexuality", "doma", "equality", "marriage"]
+gayRights_list = ["gay", "sexuality", "doma", "sexuality", "marriage", "homosexual", "homosexuality"]
 
 def hello(request):
     return Response('Hello World!' % request.matchdict)

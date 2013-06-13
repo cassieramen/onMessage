@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!-- CSS -->
+<link href="style.css" type="text/css" rel="stylesheet" media="screen" />
+
+<!-- PHP -->
+<?php require('insert.php'); ?>
+<?php require('getTerms.php'); ?>
+
+</head>
+<body> 
+	<div id="inner">
+		<div id="outer">
+
+				<h1>Select Categories</h1>
+					<select id='select_box'>
+						<option value='Immigration' action="getTerms.php" name="category_list">Immigration</option>
+						<option value='Energy'>Energy</option>
+					</select>
+
+				<div id="text_area">
+					<textarea rows="4" cols="50">immigration, immigrant, immigrants, dream, deport, deported, deportation, illegal, citizen,citizenship
+					</textarea> 
+					<br />
+					<input type="submit" value="Update" onClick="alert('Sucess!')" />
+				</div>
+
+				<div id="new_category">
+					<form action="insert.php" method="post">
+						Category: <input type="text" name="category"><br>
+						Term: <input type="text" name="term"><br>
+					<input type="Submit">
+					</form>
+				</div>
+
+		</div>
+	</div>
+</body>
+</html>
